@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>แบบฟอร์มข้อมูลประจำปีพนักงาน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Employee Annual Information</p>
+        <h1 id="page-title">แบบฟอร์มข้อมูลประจำปีพนักงาน</h1>
+        <p class="lede">กรอกข้อมูลให้ครบถ้วนเพื่อบันทึกเข้าฐานข้อมูล Google Sheet ของบริษัท</p>
+      </div>
+      <div class="status-pill" id="connection-status" aria-live="polite">พร้อมกรอกข้อมูล</div>
+    </section>
+
+    <form id="employee-form" class="form-panel" novalidate>
+      <section class="section-block" aria-labelledby="personal-title">
+        <div class="section-head">
+          <h2 id="personal-title">ข้อมูลพนักงาน</h2>
+        </div>
+
+        <div class="grid">
+          <label class="field">
+            <span>ชื่อ - นามสกุล (ภาษาไทย)</span>
+            <input id="fullNameTh" name="fullNameTh" type="text" autocomplete="name" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field">
+            <span>ชื่อ - นามสกุล (ภาษาอังกฤษ)</span>
+            <input id="fullNameEn" name="fullNameEn" type="text" autocomplete="name" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field">
+            <span>วัน เดือน ปีเกิด</span>
+            <input id="birthDate" name="birthDate" type="date" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field">
+            <span>เลขบัตรประชาชน</span>
+            <input id="nationalId" name="nationalId" type="text" inputmode="numeric" maxlength="13" pattern="[0-9]{13}" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field">
+            <span>หมายเลขโทรศัพท์</span>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field">
+            <span>เลขบัญชีธนาคาร (ที่ใช้ในบริษัทฯ)</span>
+            <input id="bankAccount" name="bankAccount" type="text" inputmode="numeric" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field field-wide">
+            <span>อีเมล (ที่ใช้ในบริษัทฯ)</span>
+            <input id="companyEmail" name="companyEmail" type="email" autocomplete="email" required>
+            <small class="error"></small>
+          </label>
+        </div>
+      </section>
+
+      <section class="section-block" aria-labelledby="emergency-title">
+        <div class="section-head">
+          <h2 id="emergency-title">ผู้ติดต่อกรณีฉุกเฉิน</h2>
+        </div>
+
+        <div class="grid">
+          <label class="field">
+            <span>ชื่อผู้ติดต่อ (กรณีฉุกเฉิน)</span>
+            <input id="emergencyContactName" name="emergencyContactName" type="text" required>
+            <small class="error"></small>
+          </label>
+
+          <label class="field">
+            <span>เบอร์ผู้ติดต่อ (กรณีฉุกเฉิน)</span>
+            <input id="emergencyContactPhone" name="emergencyContactPhone" type="tel" inputmode="tel" required>
+            <small class="error"></small>
+          </label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="secondary" type="reset">ล้างข้อมูล</button>
+        <button class="primary" id="submit-button" type="submit">ส่งข้อมูล</button>
+      </div>
+
+      <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+
+  <div class="modal-backdrop" id="success-modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+      <div class="success-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M9.2 16.6 4.9 12.3 3.5 13.7 9.2 19.4 20.7 7.9 19.3 6.5z"></path>
+        </svg>
+      </div>
+      <h2 id="success-modal-title">บันทึกข้อมูลเรียบร้อย</h2>
+      <p>ข้อมูลถูกส่งไปยัง Google Sheet แล้ว</p>
+      <button class="primary modal-close" id="success-modal-close" type="button">ตกลง</button>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
