@@ -27,7 +27,7 @@ function doPost(e) {
       cleanText(payload.birthDate),
       cleanText(payload.nationalId),
       phoneFormula(payload.phone),
-      cleanText(payload.bankAccount),
+      phoneFormula(payload.bankAccount),
       cleanText(payload.companyEmail),
       cleanText(payload.emergencyContactName),
       phoneFormula(payload.emergencyContactPhone),
@@ -61,13 +61,18 @@ function getSheet() {
 
 function ensurePhoneColumnsAsTenDigits(sheet) {
   sheet.getRange("F:F").setNumberFormat("0000000000");
+  sheet.getRange("G:G").setNumberFormat("0000000000");
   sheet.getRange("J:J").setNumberFormat("0000000000");
 }
 
-function phoneFormula(value) {
+function numericIdFormula(value) {
   const digits = String(value || "").replace(/\D/g, "");
   if (!digits) return "";
   return `=TEXT("${digits}", "0000000000")`;
+}
+
+function phoneFormula(value) {
+  return numericIdFormula(value);
 }
 
 function cleanText(value) {

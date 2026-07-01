@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EYVqgjZLxZont3pRab0WWI80qVSCpWQ7bxf1YQ8eWuNuTq-nRw1tAGidP6TpVgE/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby99r96u7OyVmDnNh1WmMQaCElcydHWtSTtvZK7b9lNv6j1QAqzboHVgRhlS-YG29k9/exec";
 
 const FIELD_LABELS = {
   fullNameTh: "ชื่อ - นามสกุล (ภาษาไทย)",
